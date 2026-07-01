@@ -1,0 +1,25 @@
+[tool.flake8]
+max-line-length = 79
+extend-ignore = ["W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "venv",
+    ".venv",
+    "env",
+    "*/migrations/*",
+]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+multi_line_output = 3
+include_trailing_comma = true
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+disallow_untyped_defs = true
+warn_return_any = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings"

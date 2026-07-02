@@ -20,6 +20,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'operation_type')
     list_filter = ('operation_type',)
     search_fields = ('name',)
+    list_select_related = ('operation_type',)
 
 
 @admin.register(Subcategory)
@@ -27,3 +28,4 @@ class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category')
     list_filter = ('category',)
     search_fields = ('name',)
+    list_select_related = ('category',)

@@ -6,22 +6,22 @@ from .models import Category, OperationType, Status, Subcategory
 class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Status
-        fields = '__all__'
+        fields = ('id', 'name',)
 
 
 class OperationTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = OperationType
-        fields = '__all__'
+        fields = ('id', 'name',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = ('id', 'name', 'operation_type',)
 
 
 class SubcategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Subcategory
-        fields = '__all__'
+        fields = ('id', 'name', 'category',)

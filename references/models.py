@@ -31,7 +31,7 @@ class Category(models.Model):
     name = models.CharField(
         max_length=50, unique=True, verbose_name='Название категории'
     )
-    type = models.ForeignKey(
+    operation_type = models.ForeignKey(
         OperationType,
         on_delete=models.CASCADE,
         related_name='categories',
@@ -43,7 +43,7 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return f'{self.name} ({self.type.name})'
+        return f'{self.name} ({self.operation_type.name})'
 
 
 class Subcategory(models.Model):

@@ -1,3 +1,5 @@
+from typing import Any
+
 from django.contrib import admin
 
 from .models import Operation
@@ -13,20 +15,37 @@ class OperationAdmin(admin.ModelAdmin):
         'category',
         'subcategory',
         'amount',
-        'comment'
+        'short_description',
     )
+
     list_filter = (
         'status',
         'operation_type',
         'category',
         'subcategory',
-        'date'
+        ('date', admin.DateFieldListFilter),
     )
-    search_fields = ('comment',)
+
+    search_fields = (
+        'comment',
+        'category__name',
+        'subcategory__name',
+        'operation_type__name',
+    )
+
     date_hierarchy = 'date'
+
     list_select_related = (
         'status',
         'operation_type',
         'category',
-        'subcategory'
+        'subcategory',
     )
+
+    ordering = ('-date',)
+
+    @admin.display(description='Описание')
+    def short_description(self, obj: Any) -> str:
+        return (
+            f'{obj.status.name} | {obj.category.name} → {obj.subcategory.name}'
+        )

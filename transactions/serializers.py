@@ -13,6 +13,7 @@ from .models import Operation
 
 
 class OperationReadSerializer(serializers.ModelSerializer):
+    """Чтение операции с вложенными справочниками (для GET-запросов)."""
     status = StatusSerializer(read_only=True)
     operation_type = OperationTypeSerializer(read_only=True)
     category = CategorySerializer(read_only=True)
@@ -33,6 +34,11 @@ class OperationReadSerializer(serializers.ModelSerializer):
 
 
 class OperationWriteSerializer(serializers.ModelSerializer):
+    """
+    Создание/обновление операции.
+
+    Принимает только ID справочников. Дополнительно проверяет бизнес-правила.
+    """
 
     class Meta:
         model = Operation

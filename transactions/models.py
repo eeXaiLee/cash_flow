@@ -15,6 +15,13 @@ from references.models import Category, OperationType, Status, Subcategory
 
 
 class Operation(models.Model):
+    """
+    Запись о движении денежных средств.
+
+    Содержит все необходимые атрибуты для учёта транзакции:
+    дату, статус, тип, категорию, подкатегорию, сумму и комментарий.
+    При сохранении проверяет логические связи между справочниками.
+    """
     date = models.DateField(
         default=timezone.localdate,
         verbose_name='Дата операции',

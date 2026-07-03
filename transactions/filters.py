@@ -4,6 +4,7 @@ from .models import Operation
 
 
 class OperationFilter(django_filters.FilterSet):
+    """Фильтрация операций по диапазону дат и справочников."""
     date_from = django_filters.DateFilter(
         field_name='date',
         lookup_expr='gte',

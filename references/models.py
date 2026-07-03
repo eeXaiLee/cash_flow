@@ -4,6 +4,7 @@ from config.constants import MAX_NAME_LENGTH
 
 
 class Status(models.Model):
+    """Статус операции."""
     name = models.CharField(
         max_length=MAX_NAME_LENGTH,
         unique=True,
@@ -19,6 +20,7 @@ class Status(models.Model):
 
 
 class OperationType(models.Model):
+    """Тип операции."""
     name = models.CharField(
         max_length=MAX_NAME_LENGTH, unique=True, verbose_name='Название типа'
     )
@@ -32,6 +34,7 @@ class OperationType(models.Model):
 
 
 class Category(models.Model):
+    """Категория операции."""
     name = models.CharField(
         max_length=MAX_NAME_LENGTH, verbose_name='Название категории'
     )
@@ -57,6 +60,7 @@ class Category(models.Model):
 
 
 class Subcategory(models.Model):
+    """Подкатегория операции."""
     name = models.CharField(
         max_length=MAX_NAME_LENGTH, verbose_name='Название подкатегории'
     )

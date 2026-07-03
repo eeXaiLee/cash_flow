@@ -1,0 +1,232 @@
+# Cash Flow
+
+Веб-сервис для управления движением денежных средств (ДДС). Позволяет создавать, редактировать, удалять и просматривать записи о денежных операциях, а также управлять справочниками статусов, типов операций, категорий и подкатегорий.
+
+## Возможности
+
+* создание, просмотр, изменение и удаление записей ДДС;
+* управление справочниками:
+
+  * статусы;
+  * типы операций;
+  * категории;
+  * подкатегории;
+* фильтрация операций:
+
+  * по диапазону дат;
+  * по статусу;
+  * по типу операции;
+  * по категории;
+  * по подкатегории;
+* проверка бизнес-правил:
+
+  * категория должна относиться к выбранному типу операции;
+  * подкатегория должна относиться к выбранной категории;
+* автоматическое заполнение даты операции с возможностью её ручного изменения;
+* API для получения категорий по типу операции и подкатегорий по категории.
+
+## Технологии
+
+* Python 3.12+
+* Django 5
+* Django REST Framework
+* django-filter
+* SQLite
+* python-dotenv
+* mypy
+* flake8
+* isort
+
+## Структура проекта
+
+```text
+cash_flow/
+├── config/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── constants.py
+│   └── ...
+├── references/
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── admin.py
+│   └── ...
+├── transactions/
+│   ├── filters.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── admin.py
+│   └── ...
+├── manage.py
+├── requirements.txt
+├── pyproject.toml
+└── .env
+```
+
+## Установка и запуск
+
+### 1. Клонировать репозиторий
+
+```bash
+git clone git@github.com:eeXaiLee/cash_flow.git
+cd cash_flow
+```
+
+### 2. Создать и активировать виртуальное окружение
+
+Для Linux/macOS:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+Для Windows:
+
+```bash
+python -m venv venv
+source venv/Scripts/activate
+```
+
+### 3. Установить зависимости
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 4. Создать файл `.env`
+
+Пример содержимого:
+
+```env
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+```
+
+### 5. Применить миграции
+
+```bash
+python manage.py migrate
+```
+
+### 6. Создать суперпользователя
+
+```bash
+python manage.py createsuperuser
+```
+
+### 7. Запустить сервер разработки
+
+```bash
+python manage.py runserver
+```
+
+После запуска приложение будет доступно по адресу:
+
+```text
+http://127.0.0.1:8000/
+```
+
+Административная панель:
+
+```text
+http://127.0.0.1:8000/admin/
+```
+
+API:
+
+```text
+http://127.0.0.1:8000/api/
+```
+
+## Основные эндпоинты API
+
+### Справочники
+
+```text
+GET, POST   /api/statuses/
+GET, PATCH, PUT, DELETE /api/statuses/{id}/
+
+GET, POST   /api/operation-types/
+GET, PATCH, PUT, DELETE /api/operation-types/{id}/
+
+GET, POST   /api/categories/
+GET, PATCH, PUT, DELETE /api/categories/{id}/
+
+GET, POST   /api/subcategories/
+GET, PATCH, PUT, DELETE /api/subcategories/{id}/
+```
+
+### Операции ДДС
+
+```text
+GET, POST   /api/operations/
+GET, PATCH, PUT, DELETE /api/operations/{id}/
+```
+
+### Фильтрация операций
+
+Примеры запросов:
+
+```text
+/api/operations/?status=1
+/api/operations/?operation_type=2
+/api/operations/?category=1
+/api/operations/?subcategory=3
+/api/operations/?date_from=2026-01-01
+/api/operations/?date_to=2026-12-31
+/api/operations/?date_from=2026-01-01&date_to=2026-12-31
+```
+
+### Получение зависимых справочников
+
+Категории по типу операции:
+
+```text
+/api/categories/?operation_type=2
+```
+
+Подкатегории по категории:
+
+```text
+/api/subcategories/?category=1
+```
+
+## Бизнес-правила
+
+* Нельзя выбрать категорию, которая не относится к указанному типу операции.
+* Нельзя выбрать подкатегорию, которая не относится к указанной категории.
+* Поля `amount`, `operation_type`, `category` и `subcategory` являются обязательными.
+* Сумма операции должна быть больше нуля.
+* Дата операции по умолчанию устанавливается автоматически и может быть изменена вручную.
+
+## Проверка качества кода
+
+Запуск flake8:
+
+```bash
+flake8 .
+```
+
+Проверка сортировки импортов:
+
+```bash
+isort .
+```
+
+Проверка типов:
+
+```bash
+mypy .
+```
+
+## Ссылки проекта
+
+- Автор: **[Евгений Димитриев](https://github.com/eeXaiLee)**
+- Репозиторий: **https://github.com/eeXaiLee/cash_flow**
+- API: `/api/`
+- Административная панель: `/admin/`

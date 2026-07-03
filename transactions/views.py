@@ -1,3 +1,4 @@
+from drf_spectacular.utils import extend_schema
 from rest_framework.serializers import BaseSerializer
 from rest_framework.viewsets import ModelViewSet
 
@@ -6,6 +7,7 @@ from .models import Operation
 from .serializers import OperationReadSerializer, OperationWriteSerializer
 
 
+@extend_schema(tags=['Операции ДДС'])
 class OperationViewSet(ModelViewSet):
     """
     Возвращает вложенные справочники при чтении

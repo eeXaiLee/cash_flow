@@ -196,6 +196,16 @@ GET, PATCH, PUT, DELETE /api/operations/{id}/
 /api/subcategories/?category=1
 ```
 
+## API документация (Swagger)
+
+Проект включает автоматически сгенерированную документацию API:
+
+- Swagger UI: `/api/docs/`
+- ReDoc: `/api/redoc/`
+- OpenAPI schema: `/api/schema/`
+
+Документация формируется автоматически на основе DRF ViewSet и сериализаторов.
+
 ## Бизнес-правила
 
 * Нельзя выбрать категорию, которая не относится к указанному типу операции.
@@ -229,4 +239,6 @@ mypy .
 - Автор: **[Евгений Димитриев](https://github.com/eeXaiLee)**
 - Репозиторий: **https://github.com/eeXaiLee/cash_flow**
 - API: `/api/`
+- Swagger: `/api/docs/`
+- ReDoc: `/api/redoc/`
 - Административная панель: `/admin/`

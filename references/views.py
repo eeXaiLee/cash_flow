@@ -26,6 +26,7 @@ class CategoryViewSet(ModelViewSet):
         .order_by('name')
     )
     serializer_class = CategorySerializer
+    filterset_fields = ('operation_type',)
 
 
 class SubcategoryViewSet(ModelViewSet):
@@ -35,3 +36,4 @@ class SubcategoryViewSet(ModelViewSet):
         .order_by('name')
     )
     serializer_class = SubcategorySerializer
+    filterset_fields = ('category',)

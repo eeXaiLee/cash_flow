@@ -1,5 +1,7 @@
+from rest_framework.serializers import BaseSerializer
 from rest_framework.viewsets import ModelViewSet
 
+from .filters import OperationFilter
 from .models import Operation
 from .serializers import OperationReadSerializer, OperationWriteSerializer
 
@@ -14,8 +16,9 @@ class OperationViewSet(ModelViewSet):
             'subcategory',
         )
     )
+    filterset_class = OperationFilter
 
-    def get_serializer_class(self):
+    def get_serializer_class(self) -> type[BaseSerializer]:
         if self.action in ('list', 'retrieve'):
             return OperationReadSerializer
         return OperationWriteSerializer

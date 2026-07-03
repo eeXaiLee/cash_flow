@@ -7,7 +7,10 @@ from .serializers import OperationReadSerializer, OperationWriteSerializer
 
 
 class OperationViewSet(ModelViewSet):
-    """Для чтения возвращает вложенные справочники, для записи — только ID."""
+    """
+    Возвращает вложенные справочники при чтении
+    и использует первичные ключи при записи.
+    """
     queryset = (
         Operation.objects
         .select_related(

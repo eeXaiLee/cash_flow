@@ -1,4 +1,3 @@
-from decimal import Decimal
 from typing import Any
 
 from django.core.exceptions import ValidationError
@@ -54,7 +53,7 @@ class Operation(models.Model):
     amount = models.DecimalField(
         max_digits=AMOUNT_MAX_DIGITS,
         decimal_places=AMOUNT_DECIMAL_PLACES,
-        validators=[MinValueValidator(Decimal(AMOUNT_MIN_VALUE))],
+        validators=[MinValueValidator(AMOUNT_MIN_VALUE)],
         verbose_name='Сумма, руб.'
     )
     comment = models.TextField(
@@ -104,5 +103,6 @@ class Operation(models.Model):
             })
 
     def save(self, *args: Any, **kwargs: Any) -> None:
+        """Проводит полную валидацию перед сохранением объекта."""
         self.full_clean()
         super().save(*args, **kwargs)

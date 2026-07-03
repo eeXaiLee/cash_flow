@@ -10,12 +10,12 @@ from .serializers import (
 
 
 class StatusViewSet(ModelViewSet):
-    queryset = Status.objects.order_by('name', 'id')
+    queryset = Status.objects.order_by('name')
     serializer_class = StatusSerializer
 
 
 class OperationTypeViewSet(ModelViewSet):
-    queryset = OperationType.objects.order_by('name', 'id')
+    queryset = OperationType.objects.order_by('name')
     serializer_class = OperationTypeSerializer
 
 
@@ -23,7 +23,7 @@ class CategoryViewSet(ModelViewSet):
     queryset = (
         Category.objects
         .select_related('operation_type')
-        .order_by('name', 'id')
+        .order_by('name')
     )
     serializer_class = CategorySerializer
 
@@ -32,6 +32,6 @@ class SubcategoryViewSet(ModelViewSet):
     queryset = (
         Subcategory.objects
         .select_related('category')
-        .order_by('name', 'id')
+        .order_by('name')
     )
     serializer_class = SubcategorySerializer

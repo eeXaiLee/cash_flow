@@ -17,8 +17,6 @@ class OperationFilter(django_filters.FilterSet):
     class Meta:
         model = Operation
         fields = (
-            'date_from',
-            'date_to',
             'status',
             'operation_type',
             'category',

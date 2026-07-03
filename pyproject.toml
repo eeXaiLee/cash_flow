@@ -4,6 +4,7 @@ extend-ignore = ["W503"]
 exclude = [
     ".git",
     "__pycache__",
+    '*.pyc',
     "venv",
     ".venv",
     "env",
@@ -20,6 +21,20 @@ include_trailing_comma = true
 plugins = ["mypy_django_plugin.main"]
 disallow_untyped_defs = true
 warn_return_any = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = [
+    'django_filters',
+    'django_filters.*',
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    '*.migrations.*',
+]
+ignore_errors = true
 
 [tool.django-stubs]
 django_settings_module = "config.settings"

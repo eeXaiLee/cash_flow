@@ -1,0 +1,133 @@
+[
+{
+  "model": "references.status",
+  "pk": 1,
+  "fields": {
+    "name": "Бизнес"
+  }
+},
+{
+  "model": "references.status",
+  "pk": 2,
+  "fields": {
+    "name": "Личное"
+  }
+},
+{
+  "model": "references.status",
+  "pk": 3,
+  "fields": {
+    "name": "Налог"
+  }
+},
+{
+  "model": "references.operationtype",
+  "pk": 1,
+  "fields": {
+    "name": "Пополнение"
+  }
+},
+{
+  "model": "references.operationtype",
+  "pk": 2,
+  "fields": {
+    "name": "Списание"
+  }
+},
+{
+  "model": "references.category",
+  "pk": 1,
+  "fields": {
+    "name": "Инфраструктура",
+    "operation_type": 2
+  }
+},
+{
+  "model": "references.category",
+  "pk": 2,
+  "fields": {
+    "name": "Маркетинг",
+    "operation_type": 2
+  }
+},
+{
+  "model": "references.category",
+  "pk": 3,
+  "fields": {
+    "name": "Продажи",
+    "operation_type": 1
+  }
+},
+{
+  "model": "references.category",
+  "pk": 4,
+  "fields": {
+    "name": "Инвестиции",
+    "operation_type": 1
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 1,
+  "fields": {
+    "name": "VPS",
+    "category": 1
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Proxy",
+    "category": 1
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Farpost",
+    "category": 2
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Avito",
+    "category": 2
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Маркетплейсы",
+    "category": 3
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 6,
+  "fields": {
+    "name": "Услуги",
+    "category": 3
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 7,
+  "fields": {
+    "name": "Дивиденды",
+    "category": 4
+  }
+},
+{
+  "model": "references.subcategory",
+  "pk": 8,
+  "fields": {
+    "name": "Проценты",
+    "category": 4
+  }
+}
+]

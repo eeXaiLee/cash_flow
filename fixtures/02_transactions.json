@@ -1,0 +1,15 @@
+[
+{
+  "model": "transactions.operation",
+  "pk": 1,
+  "fields": {
+    "date": "2026-07-03",
+    "status": 1,
+    "operation_type": 2,
+    "category": 1,
+    "subcategory": 1,
+    "amount": "1500.00",
+    "comment": "Оплата VPS"
+  }
+}
+]

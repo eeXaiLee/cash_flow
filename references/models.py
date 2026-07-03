@@ -1,9 +1,13 @@
 from django.db import models
 
+from config.constants import MAX_NAME_LENGTH
+
 
 class Status(models.Model):
     name = models.CharField(
-        max_length=50, unique=True, verbose_name='Название статуса'
+        max_length=MAX_NAME_LENGTH,
+        unique=True,
+        verbose_name='Название статуса'
     )
 
     class Meta:
@@ -16,7 +20,7 @@ class Status(models.Model):
 
 class OperationType(models.Model):
     name = models.CharField(
-        max_length=50, unique=True, verbose_name='Название типа'
+        max_length=MAX_NAME_LENGTH, unique=True, verbose_name='Название типа'
     )
 
     class Meta:
@@ -29,7 +33,7 @@ class OperationType(models.Model):
 
 class Category(models.Model):
     name = models.CharField(
-        max_length=50, verbose_name='Название категории'
+        max_length=MAX_NAME_LENGTH, verbose_name='Название категории'
     )
     operation_type = models.ForeignKey(
         OperationType,
@@ -54,7 +58,7 @@ class Category(models.Model):
 
 class Subcategory(models.Model):
     name = models.CharField(
-        max_length=50, verbose_name='Название подкатегории'
+        max_length=MAX_NAME_LENGTH, verbose_name='Название подкатегории'
     )
     category = models.ForeignKey(
         Category,

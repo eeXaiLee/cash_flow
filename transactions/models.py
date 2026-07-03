@@ -6,6 +6,11 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils import timezone
 
+from config.constants import (
+    AMOUNT_DECIMAL_PLACES,
+    AMOUNT_MAX_DIGITS,
+    AMOUNT_MIN_VALUE,
+)
 from references.models import Category, OperationType, Status, Subcategory
 
 
@@ -40,9 +45,9 @@ class Operation(models.Model):
         verbose_name='Подкатегория'
     )
     amount = models.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        validators=[MinValueValidator(Decimal(0.01))],
+        max_digits=AMOUNT_MAX_DIGITS,
+        decimal_places=AMOUNT_DECIMAL_PLACES,
+        validators=[MinValueValidator(Decimal(AMOUNT_MIN_VALUE))],
         verbose_name='Сумма, руб.'
     )
     comment = models.TextField(

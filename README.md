@@ -48,6 +48,14 @@ cash_flow/
 │   ├── wsgi.py
 │   ├── constants.py
 │   └── __init__.py
+├── fixtures/
+│   ├── references.json
+│   └── transactions.json
+├── tests/
+│   ├── __init__.py
+│   ├── conftest.py
+│   ├── test_api.py
+│   └── test_models.py
 ├── references/
 │   ├── models.py
 │   ├── serializers.py
@@ -61,9 +69,6 @@ cash_flow/
 │   ├── filters.py
 │   ├── admin.py
 │   └── migrations/
-├── fixtures/
-│   ├── references.json
-│   └── transactions.json
 ├── manage.py
 ├── requirements.txt
 ├── pyproject.toml
@@ -262,6 +267,28 @@ isort .
 
 ```bash
 mypy .
+```
+
+## Тестирование
+
+Проект содержит базовые тесты на `pytest` и `pytest-django`, покрывающие наиболее важную функциональность:
+
+- создание и валидацию моделей;
+- получение данных через API;
+- создание операций;
+- проверку бизнес-правил;
+- фильтрацию операций.
+
+Запуск всех тестов:
+
+```bash
+pytest
+```
+
+Подробный вывод:
+
+```bash
+pytest -v
 ```
 
 ## Ссылки проекта

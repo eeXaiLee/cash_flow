@@ -36,6 +36,9 @@
 * mypy
 * flake8
 * isort
+* pytest
+* Docker
+* Docker Compose
 
 ## Структура проекта
 
@@ -49,8 +52,8 @@ cash_flow/
 │   ├── constants.py
 │   └── __init__.py
 ├── fixtures/
-│   ├── references.json
-│   └── transactions.json
+│   ├── 01_references.json
+│   └── 02_transactions.json
 ├── tests/
 │   ├── __init__.py
 │   ├── conftest.py
@@ -69,6 +72,9 @@ cash_flow/
 │   ├── filters.py
 │   ├── admin.py
 │   └── migrations/
+├── .dockerignore
+├── docker-compose.yml
+├── Dockerfile
 ├── manage.py
 ├── requirements.txt
 ├── pyproject.toml
@@ -153,6 +159,26 @@ API:
 ```text
 http://127.0.0.1:8000/api/
 ```
+
+## Запуск через Docker (альтернативный способ)
+
+Если у вас установлены Docker и Docker Compose, можно запустить приложение в контейнере без ручной настройки окружения.
+
+```bash
+docker compose build
+docker compose up
+```
+
+### Основные команды внутри контейнера
+
+| Действие | Команда |
+|----------|---------|
+| Применить миграции | `docker compose exec web python manage.py migrate` |
+| Создать суперпользователя | `docker compose exec web python manage.py createsuperuser` |
+| Загрузить справочники | `docker compose exec web python manage.py loaddata fixtures/01_references.json` |
+| Загрузить операции | `docker compose exec web python manage.py loaddata fixtures/02_transactions.json` |
+| Запустить тесты | `docker compose exec web pytest` |
+| Остановить контейнеры | `docker compose down` |
 
 ## Загрузка тестовых данных (фикстуры)
 
